@@ -48,15 +48,22 @@ def main():
             system.game = "game"
         elif system.game == "end": # The "Beat the game" screen
             system.end_scrn()
-            if click_btn(system.button[0]):
-              system.game = "game"
-              system.clear_scores()
-              total_strks = 0
-              level.restart()
-            if click_btn(system.button[1]):
-              system.game = "bye"
+            if click_btn(system.button[0], system.button[1]):
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                if system.button[0].collidepoint(mouse_x, mouse_y):
+                    system.game = "game"
+                    system.clear_scores()
+                    total_strks = 0
+                    level.restart()
+                else:
+                    system.game = "bye"
+
         elif system.game == "bye": # Final goodbye screen
             system.bye_scrn()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    play = False
+                    pygame.quit()
             
         elif system.game == "game": # If they are currently playing the game
             #####

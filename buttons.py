@@ -21,13 +21,14 @@ class button:
     self.screen.blit(btn_text, self.btn)
 
 
-def click_btn(button):
+def click_btn(*buttons):
   for event in pygame.event.get():
     if event.type == pygame.MOUSEBUTTONDOWN:
       # Checks whether the left mouse button is clicked
       left_clicked = pygame.mouse.get_pressed()[0]
       if left_clicked:
           mouse_x, mouse_y = pygame.mouse.get_pos()
-          if button != None:
-              if button.collidepoint(mouse_x, mouse_y): # Checks if the player clicked the button
-                return True
+          for button in buttons:
+            if button != None:
+                if button.collidepoint(mouse_x, mouse_y): # Checks if the player clicked the button
+                  return True
