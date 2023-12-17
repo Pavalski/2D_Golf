@@ -83,9 +83,9 @@ def bye_screen(screen):
 
 def instructions_screen(screen):
   """Instruction Screen"""
-  font = pygame.font.SysFont("freemono", 15)
+  font = pygame.font.SysFont("freemono", 14)
   txt_lst = []
-  stroke_txt = font.render("To hit the ball click then pull back then release.", True, colour.BLACK)
+  stroke_txt = font.render("Left click, pull back then release to hit the ball. Right click to reset the hit.", True, colour.BLACK)
   txt_lst.append(stroke_txt)
   hole_txt = font.render("Your aim is to get the ball into this hole. There is a speed limit.", True, colour.BLACK)
   txt_lst.append(hole_txt)
@@ -107,7 +107,7 @@ def instructions_screen(screen):
   for txt_num, txt in enumerate(txt_lst):
     if txt_num == 0:
       rect = txt.get_rect()
-      rect.topleft = (150, 10)
+      rect.topleft = (25, 10)
     elif txt_num == len(txt_lst) - 1:
       rect = txt.get_rect()
       rect.bottomleft = (75, 600)
